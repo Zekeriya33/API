@@ -3,6 +3,7 @@ package get_request;
 import base_url.JsonplaceholderBaseUrl;
 import io.restassured.response.Response;
 import org.junit.Test;
+import test_data.JsonPlaceHolederTestData;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -23,7 +24,7 @@ public class Get08 extends JsonplaceholderBaseUrl {
    When
        I send GET Request to the URL
    Then
-       Status code is 200
+       Status code is 200"
        And "completed" is false
        And "userId" is 1
        And "title" is "quis ut nam facilis et officia qui"
@@ -38,18 +39,18 @@ public class Get08 extends JsonplaceholderBaseUrl {
 */
 
     @Test
-    public void get01() {
+    public void get08() {
         Object obj =
         //Set the Url
         spec.pathParams("first","todos","second",2);
         //Set The Expected Data
+
         Map<String,Object> expectedData = new HashMap<>();
         expectedData.put("userId",1);
         expectedData.put("id",2);
         expectedData.put("title","quis ut nam facilis et officia qui");
         expectedData.put("completed",false);
         System.out.println(expectedData);
-
 
         //Send The Request and Get The Response
         Response response =given().spec(spec).when().get("/{first}/{second}");
@@ -59,6 +60,34 @@ public class Get08 extends JsonplaceholderBaseUrl {
       Map<String , Object> actualData = response.as(HashMap.class); // De-Serialization
         assertEquals(expectedData.get("userId"),actualData.get("userId"));
         assertEquals(expectedData.get("id"),actualData.get("id"));
+        assertEquals(expectedData.get("title"),actualData.get("title"));
+        assertEquals(expectedData.get("completed"),actualData.get("completed"));
+        assertEquals("1.1 vegur",response.header("Via"));
+        assertEquals("cloudflare",response.header("Server"));
+        assertEquals(200,response.statusCode());
+
+
+    }
+
+    @Test
+    public void get08b() {
+        Object obj =
+                //Set the Url
+                spec.pathParams("first","todos","second",2);
+        //Set The Expected Data
+
+        JsonPlaceHolederTestData objJasonPlace=new JsonPlaceHolederTestData();
+        Map<String , Object> expectedData=objJasonPlace.expectedDataMapMethod(1,"quis ut nam facilis et officia qui",false);
+
+
+
+        //Send The Request and Get The Response
+        Response response =given().spec(spec).when().get("/{first}/{second}");
+        response.prettyPrint();
+
+        //Do Assertion
+        Map<String , Object> actualData = response.as(HashMap.class); // De-Serialization
+        assertEquals(expectedData.get("userId"),actualData.get("userId"));
         assertEquals(expectedData.get("title"),actualData.get("title"));
         assertEquals(expectedData.get("completed"),actualData.get("completed"));
         assertEquals("1.1 vegur",response.header("Via"));
