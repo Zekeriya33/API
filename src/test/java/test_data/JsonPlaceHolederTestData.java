@@ -9,9 +9,9 @@ public class JsonPlaceHolederTestData {
 
 
     Map<String,Object> expectedData = new HashMap<>();
-        expectedData.put("userId",1);
-        expectedData.put("title","quis ut nam facilis et officia qui");
-        expectedData.put("completed",false);
+        expectedData.put("userId",userId);
+        expectedData.put("title",title);
+        expectedData.put("completed",completed);
 
             return expectedData;
 
