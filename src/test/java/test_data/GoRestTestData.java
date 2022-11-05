@@ -34,8 +34,13 @@ public class GoRestTestData {
     public Map<String, Object> expectedDataMethod(Object meta, Map<String , String> data ){
 
         Map<String , Object> expectedData = new HashMap<>();
-        expectedData.put("meta",meta);
-        expectedData.put("data",data);
+        if (meta!=null){
+            expectedData.put("meta",meta);
+        }
+        if(data!=null){
+            expectedData.put("data",data);
+        }
+
 
 
 
