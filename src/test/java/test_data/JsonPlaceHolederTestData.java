@@ -23,6 +23,27 @@ public class JsonPlaceHolederTestData {
 
 
     }
+    public String expectedDataInString(Integer userId,String title,Boolean completed){ // dinamik expected data methodu
+        // Json datayı String bir conteynır olarak return eder
+
+        String expectedData = " {\n" +
+                "                 \"userId\": "+userId+",\n" +
+                "                 \"title\": \""+title+"\",\n" +
+                "                 \"completed\": "+completed+"\n" +
+                "               }";
+
+
+        return expectedData;
+    }
+
+
 
 
 }
+/*
+ {
+                 "userId": 55,
+                 "title": "Tidy your room",
+                 "completed": false
+               }
+ */
