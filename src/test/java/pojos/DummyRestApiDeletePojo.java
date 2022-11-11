@@ -3,47 +3,60 @@ package pojos;
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class DummyRestApiResponseBodyPojo {
+public class DummyRestApiDeletePojo {
 
+    /*
+    {
+    "status": "success",
+    "data": "2",
+    "message": "Successfully! Record has been deleted"
+}
+     */
     private String status;
-    private DummyRestApiDataPojo data;
+    private String data;
     private String message;
 
-    public DummyRestApiResponseBodyPojo(String status, DummyRestApiDataPojo data, String message) {
+    public DummyRestApiDeletePojo(String status, String data, String message) {
         this.status = status;
         this.data = data;
         this.message = message;
     }
 
-    public DummyRestApiResponseBodyPojo() {
+    public DummyRestApiDeletePojo() {
     }
 
     public String getStatus() {
         return status;
     }
+
     public void setStatus(String status) {
         this.status = status;
     }
-    public DummyRestApiDataPojo getData() {
+
+    public String getData() {
         return data;
     }
-    public void setData(DummyRestApiDataPojo data) {
+
+    public void setData(String data) {
         this.data = data;
     }
+
     public String getMessage() {
         return message;
     }
+
+
+
     public void setMessage(String message) {
         this.message = message;
-    }
 
+    }
     @Override
     public String toString() {
-        return "DummyRestApiResponseBodyPojo{" +
+        return "DummyRestApiDeletePojo{" +
                 "status='" + status + '\'' +
-                ", data=" + data +
+                ", data='" + data + '\'' +
                 ", message='" + message + '\'' +
                 '}';
-
     }
 }
